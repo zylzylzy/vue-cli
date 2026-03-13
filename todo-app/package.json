@@ -1,0 +1,11 @@
+{
+  "name": "todo-fullstack-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Full-stack todo app with Node, SQLite, Vue 3, and TypeScript",
+  "scripts": {
+    "build:client": "tsc -p tsconfig.json",
+    "start": "npm run build:client && node server.js",
+    "dev": "npm run build:client && node server.js"
+  }
+}
