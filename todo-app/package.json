@@ -1,11 +1,18 @@
 {
-  "name": "todo-fullstack-app",
-  "version": "1.0.0",
+  "name": "todo-project",
   "private": true,
-  "description": "Full-stack todo app with Node, SQLite, Vue 3, and TypeScript",
+  "version": "1.0.0",
+  "engines": {
+    "node": "22.13.0"
+  },
   "scripts": {
-    "build:client": "tsc -p tsconfig.json",
-    "start": "npm run build:client && node server.js",
-    "dev": "npm run build:client && node server.js"
+    "dev": "concurrently -k \"npm run dev --prefix server\" \"npm run dev --prefix web\"",
+    "dev:server": "npm run dev --prefix server",
+    "dev:web": "npm run dev --prefix web",
+    "build": "npm run build --prefix web",
+    "smoke": "node scripts/smoke-test.mjs"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
   }
 }

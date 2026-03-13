@@ -1,54 +1,46 @@
-# Full-Stack Todo App (Node + SQLite + Vue 3 + TypeScript)
+# Todo Project (Vue3 + TS + Pinia + Element Plus + Express + SQLite)
 
-This project includes:
-- **Backend**: Node.js HTTP server
-- **Database**: SQLite (using Node's built-in `node:sqlite` module)
-- **Frontend**: Simple HTML page using Vue 3, with frontend logic written in TypeScript
-- **API Endpoints**:
-  - `POST /api/tasks` (create task)
-  - `GET /api/tasks` (list tasks)
-  - `DELETE /api/tasks/:id` (delete task)
+## 环境要求
+- Node.js `v22.13.0`
+- npm
 
-## 1) Create and activate a virtual environment
+## 项目结构
+- `web`: Vue3 + TypeScript + Pinia + Element Plus (Vite)
+- `server`: Express + SQLite
+- 数据库文件：`server/data/todo.db`
 
-> This uses a Python virtual environment to isolate tooling, then installs a local Node runtime inside it using `nodeenv`.
-
+## 安装依赖
 ```bash
 cd todo-app
-python3 -m venv .venv
-source .venv/bin/activate
-pip install nodeenv
-nodeenv -p --node=22
+npm install
+npm install --prefix server
+npm install --prefix web
 ```
 
-## 2) Build the frontend TypeScript
-
+## 一条命令同时启动前后端
 ```bash
-npm run build:client
+npm run dev
 ```
 
-## 3) Run the project
+说明：
+- 根目录使用 `concurrently` 并发执行：
+  - `npm run dev --prefix server`
+  - `npm run dev --prefix web`
+- 前端默认：`http://localhost:5173`
+- 后端默认：`http://localhost:3000`
 
+## API 列表
+- `GET /api/todos` 获取列表
+- `POST /api/todos` 新增 todo（`title` 必填）
+- `PATCH /api/todos/:id` 更新完成状态（`completed` 布尔值）
+- `DELETE /api/todos/:id` 删除 todo
+
+## 基础测试（smoke test）
+先启动后端（单独终端执行）：
 ```bash
-npm start
+npm run dev --prefix server
 ```
-
-Open: http://localhost:3000
-
-## Project structure
-
-```text
-todo-app/
-├── public/
-│   └── index.html
-├── src/frontend/
-│   └── app.ts
-├── server.js
-├── package.json
-└── tsconfig.json
+再运行：
+```bash
+npm run smoke
 ```
-
-## Notes
-
-- SQLite data is stored in `todo.db` in the project root.
-- Frontend TypeScript (`src/frontend/app.ts`) is compiled to `public/app.js`.
