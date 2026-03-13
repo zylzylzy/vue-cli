@@ -1,4 +1,5 @@
 node_modules/
-.venv/
-todo.db
-public/app.js
+server/node_modules/
+web/node_modules/
+server/data/todo.db
+web/dist/
