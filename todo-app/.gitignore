@@ -1,0 +1,4 @@
+node_modules/
+.venv/
+todo.db
+public/app.js

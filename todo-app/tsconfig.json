@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ES2020",
+    "moduleResolution": "Bundler",
+    "lib": ["ES2020", "DOM"],
+    "strict": true,
+    "skipLibCheck": true,
+    "outDir": "public",
+    "rootDir": "src/frontend"
+  },
+  "include": ["src/frontend/**/*.ts", "src/frontend/**/*.d.ts"]
+}
